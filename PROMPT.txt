@@ -1,31 +1,27 @@
+I left out telling it to be a professional below explains why. I also have seen drops in performance  in personal experience.
+https://distl.com.au/insights/ai-prompting-tips-why-telling-ai-its-an-expert-actually-makes-it-worse/
+https://www.theregister.com/2026/03/24/ai_models_persona_prompting/
+https://theoutpost.ai/news-story/telling-ai-it-s-an-expert-actually-makes-it-worse-at-coding-and-math-researchers-find-24847/
 
+https://www.dsec.nl/2026/04/everyone-is-using-act-as-an-expert-in-ai-prompts-new-research-says-thats-a-mistake/
 
-Write a minimum 25-step instruction set that walks an absolute beginner through the entire process of setting up Git and cloning a repository — 
-from opening a terminal for the first time to viewing a congratulations message in a file. The audience has basic computer literacy but no command line, 
-Git, or GitHub experience whatsoever. Assume the reader does not know what a terminal is, where to find it, what a command is, or what Git does.
-
-The instructions must cover the following sequence in order. First, opening the terminal, which is the Terminal app on Mac and Command Prompt or PowerShell on Windows. 
-Second, installing Git entirely from the command line with no browser or website required — on Mac this requires installing Homebrew first using the official Homebrew 
-install command, then using Homebrew to install Git, and on Windows this requires using winget which is the built-in Windows Package Manager using the command winget 
-install --id Git.Git -e --source winget. Third, verifying Git is installed. Fourth, configuring Git username and email. Fifth, cloning the repository directly from 
-the command line using this exact URL: https://github.com/Dakotahernandez/PWR-3300.git. Sixth, navigating into the cloned project folder. Seventh, using the cat command 
-on Mac or the type command on Windows to open and read OPEN-THIS.txt in the project root. Eighth, creating a new file using the touch command on Mac or the echo. command 
-on Windows, naming the file with the user's first and last name such as JohnDoe.txt, adding a single line of text to it, staging the file with git add, committing it with
- a descriptive commit message using git commit, and pushing it to the main branch using git push.
-
-Every step must be numbered sequentially and numbering must never restart for any reason. At every step where Mac and Windows differ, present both options side by side
- using this exact format: "Mac: [instruction] | Windows: [instruction]". Where steps are identical on both platforms, write them once with no platform label. Every 
- command the user must type must appear on its own line in a code block. After every command, include one sentence explaining what that command does. The entire process 
- from start to finish must be achievable using only the command line with no website visits, no browser-based installers, and no manual file transfers at any point. 
- Include a troubleshooting note after any step that commonly causes errors for beginners such as PATH issues, permission errors, or authentication errors on push.
-  Tone must be strictly professional and concise with no encouragement, no filler phrases, and no conversational language. This must be one unified sequential 
-  instruction set and must never be split into two separate guides. Include a short required materials section at the top listing everything the user needs before 
-  starting. Include a brief one paragraph overview at the top explaining what Git and GitHub are, why this process matters, and how Git and GitHub are useful beyond 
-  code including sharing documents, research files, design assets, class projects, and any other files where version history and collaboration matter.
-
-The output must be formatted as a .docx file. The font must be Times New Roman 12pt throughout. Step numbers and section headers must be bolded. 
-Command blocks must be bolded and written in a monospace code-like font. Key terms introduced for the first time such as terminal, repository, and 
-clone must be bolded on first use. Section titles such as Required Materials, Overview, and Troubleshooting must be bolded and placed on their own line.
-
----
-
+Write a minimum 25-step instruction set that walks an absolute beginner through the entire process of setting up Git and cloning a repository — from opening a terminal for the
+ first time to viewing a congratulations message in a file. The audience has basic computer literacy but no command line, Git, or GitHub experience at all. Assume the reader does
+  not know what a terminal is, where to find it, what a command is, or what Git does. The instructions must cover the following sequence in order. First, opening the terminal, which
+   is the Terminal app on Mac and Command Prompt or PowerShell on Windows. Second, installing Git entirely from the command line with no browser or website required — on Mac this requires
+    installing Homebrew first using the official Homebrew install command, then using Homebrew to install Git, and on Windows this requires using winget which is the built-in Windows 
+    Package Manager using the command winget install --id Git.Git -e --source winget. Third, verifying Git is installed. Fourth, configuring Git username and email. Fifth, cloning 
+    the repository directly from the command line using this exact URL: https://github.com/Dakotahernandez/PWR-3300.git. Sixth, navigating into the cloned project folder. Seventh,
+     using the cat command on Mac or the type command on Windows to open and read OPEN-THIS.txt in the project root. Eighth, creating a new file using the touch command on Mac or the echo. 
+     command on Windows, naming the file with the user's first and last name such as JohnDoe.txt, adding a single line of text to it, staging the file with git add, committing it with a 
+     descriptive commit message using git commit, and pushing it to the main branch using git push. Every step must be numbered sequentially and numbering must never restart for any reason.
+      At every step where Mac and Windows differ, present both options side by side using this exact format: "Mac: [instruction] | Windows: [instruction]". Where steps are identical on both 
+      platforms, write them once with no platform label. Every command the user must type must appear on its own line in a code block. After every command, include one sentence explaining what
+       that command does. The entire process from start to finish must be achievable using only the command line with no website visits, no browser-based installers, and no manual file t
+       ransfers at any point. Include a troubleshooting note after any step that commonly causes errors for beginners such as PATH issues, permission errors, or authentication errors on push.
+        Tone must be strictly professional and concise with no encouragement, no filler phrases, and no conversational language. This must be one unified sequential instruction set and must 
+        never be split into two separate guides. Include a short required materials section at the top listing everything the user needs before starting. Include a brief one paragraph overview 
+        at the top explaining what Git and GitHub are, why this process matters, and how Git and GitHub are useful beyond code including sharing documents, research files, design assets, 
+        class projects, and any other files where version history and collaboration matter. The output must be formatted as a .docx file. The font must be Times New Roman 12pt throughout. 
+        Follow good practice from instruction guides. Look at those formats and use those . Should look like a profesional manual. Section titles such as Required Materials, Overview, and 
+        Troubleshooting must be bolded and placed on their own line.

@@ -1,0 +1,145 @@
+Git and GitHub Setup Guide for Beginners
+Required Materials
+• A computer running macOS or Windows 10 or later.
+• An active internet connection.
+• A GitHub account with a verified email address.
+• A GitHub Personal Access Token (classic or fine grained) with repository write access, generated in advance and stored in a safe location.
+• Administrator privileges on the computer to install software.
+• Your first and last name to use as a file name.
+Overview
+Git is a version control system that tracks changes to files over time. GitHub is an online service that hosts Git repositories and enables remote access and collaboration.
+Together they allow a person to download a project, modify it, and submit changes back to a shared copy stored online. This process matters because it is the standard method
+ used to distribute, update, and collaborate on project files across professional and academic environments. Although Git is most commonly used for source code, it is equally
+  valuable for any files that benefit from version history and collaboration, including written documents, research data, design assets, class projects, engineering drawings, 
+  audio and video edits, and shared reference material. The steps below walk through every action required to install Git, connect to GitHub, retrieve a repository, and submit
+   a new file back to it, using only the command line.
+Instructions
+1. Locate and open the terminal application on the computer.
+Mac: Press Command and Space to open Spotlight, type "Terminal", and press Return to launch the Terminal application. | Windows: Press the Windows key, type "PowerShell", and press 
+Enter to launch Windows PowerShell. Command Prompt may be used as an alternative by typing "Command Prompt" in the same search.
+2. Identify the command prompt inside the terminal window.
+The terminal displays a line ending in a symbol such as $ on Mac or > on Windows. Text typed after this symbol is a command. Commands are executed by pressing Return on Mac or Enter on Windows.
+3. Confirm the current working directory to establish a known starting location.
+Mac: Type the following command and press Return. | Windows: Type the following command and press Enter.
+pwd
+On Mac, pwd prints the full path of the current working directory. On Windows PowerShell, pwd is an alias for Get-Location and performs the same function.
+4. Change to the home directory to ensure all following work occurs in a predictable location.
+cd ~
+The cd command changes the current directory. The tilde represents the current user home directory on both Mac and Windows PowerShell.
+5. Install the package manager required to install Git from the command line.
+Mac: Install Homebrew by running the official install command shown below.
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+This command downloads the official Homebrew installation script and executes it in a bash shell. Homebrew is the standard package manager for macOS and will be used to install Git in the next step.
+Windows: Confirm that winget, the built-in Windows Package Manager, is available by running the command below.
+winget --version
+This command prints the installed winget version number. Winget is included by default on Windows 10 version 1809 and later and on all supported versions of Windows 11, and will be used to install Git in the next step.
+Troubleshooting: On Mac, the Homebrew installer may prompt for the user password and for permission to install the Xcode Command Line Tools. Enter the password when prompted and accept the Command Line Tools installation.
+ If the installer reports that it cannot write to /opt/homebrew or /usr/local, the user account lacks administrator rights and must be granted them before proceeding. On Windows, if winget is not recognized as a command, 
+ update the App Installer package through the Microsoft Store from within the system or run Windows Update before retrying.
+6. Configure the shell to recognize Homebrew after installation.
+Mac: After the Homebrew installer completes, it prints two commands under a section labeled "Next steps". Run both commands exactly as printed. The first appends a line to the shell configuration file and the second
+ loads Homebrew into the current shell session. Example commands are shown below and may vary slightly by processor architecture.
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+The first command adds Homebrew to the shell startup file so it loads automatically in future sessions. The second command loads Homebrew immediately so it is usable in the current session. | Windows: No equivalent action is required. Continue to the next step.
+Troubleshooting: If a later command reports "brew: command not found" on Mac, the shell configuration did not load. Close the terminal window, open a new one, and run the second command above to load Homebrew manually.
+7. Install Git using the package manager.
+Mac: Run the command below.
+brew install git
+Homebrew downloads and installs the latest stable release of Git along with its required dependencies.
+Windows: Run the command below.
+winget install --id Git.Git -e --source winget
+Winget installs the official Git for Windows package from the winget source using the exact package identifier Git.Git.
+Troubleshooting: On Windows, winget may prompt to accept source agreements. Type Y and press Enter to accept. If the install fails with an elevation error, close the terminal, right click PowerShell or Command Prompt, select "Run as administrator", and retry the command.
+8. Close the current terminal window and open a new one.
+A new terminal session ensures that Git is available on the system PATH. Repeat the terminal launch procedure from Step 1.
+Troubleshooting: If later commands report "git: command not found" on Mac or "git is not recognized as an internal or external command" on Windows, the PATH has not been refreshed. Fully close every terminal window and reopen a new one. On Windows, 
+signing out and back in to the user account refreshes PATH for all applications.
+9. Verify that Git is installed and accessible.
+git --version
+This command prints the installed Git version. A version string such as "git version 2.45.0" confirms a successful installation on either platform.
+10. Configure the Git user name that will appear on commits. Replace the example name with the actual first and last name.
+git config --global user.name "John Doe"
+This command stores the provided name in the global Git configuration file. The --global flag applies the setting to every repository on the computer for the current user.
+11. Configure the Git email address that will appear on commits. Use the same email address associated with the GitHub account.
+git config --global user.email "johndoe@example.com"
+This command stores the provided email in the global Git configuration file and links commits to the corresponding GitHub account.
+12. Set the default initial branch name to match the repository.
+git config --global init.defaultBranch main
+This command sets main as the default branch name for any new repository created on the computer, aligning local behavior with the remote repository used in later steps.
+13. Confirm that the configuration was applied correctly.
+git config --global --list
+This command prints all global Git settings. Confirm that user.name, user.email, and init.defaultBranch match the values set in the previous three steps.
+14. Return to the home directory before cloning to place the project in a predictable location.
+cd ~
+This command ensures the repository is cloned into the home directory rather than an unrelated folder.
+15. Clone the target repository from GitHub onto the local computer.
+git clone https://github.com/Dakotahernandez/PWR-3300.git
+This command contacts GitHub, downloads the full contents and history of the repository at the given URL, and creates a new folder named PWR-3300 in the current directory.
+Troubleshooting: If the clone fails with an SSL or certificate error, the network connection may be blocked by a firewall or proxy. Retry on a different network. If the clone fails with a "repository not found" error, verify that the URL was typed exactly as shown, including capitalization.
+16. Navigate into the cloned project folder.
+cd PWR-3300
+This command changes the current working directory to the cloned repository. All subsequent Git commands will operate on this repository.
+17. List the contents of the project folder to confirm the repository was cloned successfully.
+Mac: Run the command below. | Windows: Run the command below.
+ls
+The ls command lists all files and folders in the current directory on Mac. On Windows PowerShell, ls is an alias for Get-ChildItem and performs the same function. Confirm that OPEN-THIS.txt appears in the output.
+18. Open and read the file named OPEN-THIS.txt in the project root.
+Mac: Run the command below.
+cat OPEN-THIS.txt
+The cat command prints the full contents of the specified file to the terminal.
+Windows: Run the command below.
+type OPEN-THIS.txt
+The type command prints the full contents of the specified file to the terminal on Windows.
+19. Create a new empty text file named with the user first and last name, such as JohnDoe.txt. Replace JohnDoe.txt with the actual name.
+Mac: Run the command below.
+touch JohnDoe.txt
+The touch command creates an empty file with the specified name in the current directory.
+Windows: Run the command below.
+echo. > JohnDoe.txt
+The echo. command followed by a redirection creates a new file with the specified name containing a single empty line.
+20. Add a single line of text to the newly created file. Replace JohnDoe.txt with the actual file name.
+Mac: Run the command below.
+echo "Submitted by John Doe" > JohnDoe.txt
+The echo command writes the quoted string into the specified file, replacing any existing contents.
+Windows: Run the command below.
+echo Submitted by John Doe > JohnDoe.txt
+The echo command writes the provided text into the specified file, replacing any existing contents.
+21. Verify that the file contains the expected text.
+Mac: Run the command below.
+cat JohnDoe.txt
+Windows: Run the command below.
+type JohnDoe.txt
+This command prints the file contents and confirms the line of text was saved correctly.
+22. Check the current status of the repository to confirm Git has detected the new file.
+git status
+This command lists all files that are new, modified, or staged. The newly created file should appear under "Untracked files".
+23. Stage the new file so Git will include it in the next commit. Replace JohnDoe.txt with the actual file name.
+git add JohnDoe.txt
+The git add command moves the specified file into the staging area, marking it for inclusion in the next commit.
+24. Commit the staged file with a descriptive commit message. Replace the example name with the actual name.
+git commit -m "Add submission file for John Doe"
+The git commit command records the staged changes in the local repository history. The -m flag attaches the quoted message to the commit.
+25. Push the commit to the main branch of the remote repository on GitHub.
+git push origin main
+The git push command uploads local commits to the specified branch on the remote repository named origin, which was set automatically during cloning.
+Troubleshooting: The first push will prompt for GitHub credentials. GitHub no longer accepts account passwords for Git operations. When prompted for a 
+password, paste the Personal Access Token listed in Required Materials. If the push is rejected with a "permission denied" or "403" error, the token is 
+missing the required repository write scope or the GitHub account does not have write access to the repository. Generate a new token with the correct scope 
+or request access from the repository owner. If the push is rejected with a message indicating the remote contains work that is not present locally, run git 
+pull origin main --rebase and then repeat the push.
+26. Verify that the push was accepted by inspecting the local log.
+git log --oneline -n 5
+This command prints the five most recent commits in a compact format. The new commit should appear at the top of the list, confirming it was recorded locally and sent to GitHub.
+27. Open the file containing the completion message to confirm the process is complete.
+Mac: Run the command below.
+cat CONGRATULATIONS.txt
+Windows: Run the command below.
+type CONGRATULATIONS.txt
+This command prints the contents of CONGRATULATIONS.txt to the terminal. The displayed message confirms that Git is installed, configured, and connected to GitHub, and
+ that the repository was cloned, modified, committed, and pushed successfully.
+Troubleshooting: If the file is not present, run git pull origin main to retrieve the latest version of the repository, then rerun the command above.
+Troubleshooting
+The notes included after specific steps cover the most common failure points. For any error not addressed above, copy the full error message from the 
+terminal and search for it alongside the word "git" in a search engine. Errors in Git are well documented, and the exact text of the message is 
+typically sufficient to locate a solution. When in doubt, rerun git status to confirm the current state of the repository before attempting further commands.
