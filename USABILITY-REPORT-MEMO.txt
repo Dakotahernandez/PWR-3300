@@ -1,0 +1,62 @@
+To: Instructor
+From: Student Tester
+Date: April 23, 2026
+Subject: Personal Usability Report on AI-Written Git/GitHub Instructions
+
+Purpose
+This memo reports results from a personal usability test of the AI-written Git/GitHub instructions in [GUIDE.txt](GUIDE.txt). The goal is to evaluate how well the guide supports real users completing the task sequence independently and to identify revisions needed before peer testing.
+
+Overview and Takeaway
+The guide is detailed, technically accurate in most command explanations, and generally executable in a clean first-time environment. However, testing showed that the guide assumes an ideal user state and does not adequately handle common real-world conditions. As written, it can cause novice users to stall when their local environment differs from the expected path. The highest-value revision is to add explicit branching instructions for predictable alternate states (for example, existing repository folder, different authentication methods, or missing end-state file).
+
+Test Context
+I performed the test on macOS using Terminal on April 23, 2026. I followed the step sequence exactly as written in [GUIDE.txt](GUIDE.txt), including clone, navigation, reading [OPEN-THIS.txt](OPEN-THIS.txt), file creation, staging, commit, push, and final verification. Per assignment guidance, when information was missing I documented the gap and made the best operational guess needed to continue.
+
+Method Notes
+1. I did not skip or reorder procedural steps.
+2. I used the exact repository URL and command forms provided in the guide.
+3. I recorded both successful outcomes and breakdown points where the guide lacked recovery guidance.
+
+Observed Results
+1. Clone step failed in a realistic state: the destination folder already existed.
+Result: testing could not proceed exactly as linear text implied until I made an inferred decision to enter the existing folder.
+2. No recovery branch exists for already-cloned repositories.
+Result: a novice user may misinterpret this as a fatal error and restart unnecessarily.
+3. Core workflow (create file, verify, add, commit, push, log) succeeded after entering the repo.
+Result: command-level guidance is mostly usable once the user is in the correct state.
+4. Final completion check references CONGRATULATIONS.txt, but that file was not present.
+Result: end-of-task validation failed even though commit and push were successful.
+5. Required Materials mandates a Personal Access Token as if universal.
+Result: this overconstrains setup because authentication behavior varies by existing credentials, helper configuration, SSH usage, and account state.
+
+Interpretation
+The guide currently optimizes for correctness of commands, but not for resilience of user flow. For beginner instructions, usability depends as much on state handling and recovery as on technical accuracy. Most observed failures were not command errors; they were missing decision points.
+
+Key Successes
+1. Command explanations are accurate, concise, and mostly understandable to a beginner.
+2. The Mac versus Windows side-by-side format improves scannability and platform confidence.
+3. Sequence and numbering are clear and easy to follow in order.
+4. Troubleshooting notes are helpful when they match the actual failure condition encountered.
+
+Required Revisions Before Peer Test
+1. Add a preflight environment check before clone.
+Include a command to list current directory contents and a note explaining what to do if PWR-3300 already exists.
+2. Add explicit clone-failure branching.
+If clone returns destination-exists, provide two choices: enter existing repo and verify remotes, or clone into a new folder name.
+3. Replace brittle final validation.
+Use verification criteria that always exist after successful completion (for example git status clean, latest commit present in log, and upstream sync confirmation) instead of depending on CONGRATULATIONS.txt.
+4. Revise authentication guidance.
+Reframe PAT as one valid method rather than mandatory for all users, and add a short decision note for credential helper or SSH-based setups.
+5. Add novice-safe recovery steps.
+Include a compact section for undoing a mistaken add/commit and deleting a test file so users can recover without restarting.
+6. Clarify assumption boundaries.
+Add one sentence near the top stating that steps assume a clean machine/new clone path, then provide alternate path links or in-line branches when assumptions fail.
+
+Priority Order for Revision
+1. Existing-folder clone branch and preflight check (highest impact on task completion).
+2. End-state verification rewrite (prevents false failure at completion).
+3. Authentication reframing (reduces unnecessary setup friction).
+4. Recovery mini-section (improves beginner confidence and reduces abandonment).
+
+Conclusion
+The instructions are close to peer-test-ready in structure, but not yet robust enough for broad beginner use. To maximize usability, revisions should prioritize state-aware branching, reliable completion checks, and practical authentication/recovery guidance. With these changes, the guide would better support both first-time users and users in common non-ideal environments.
